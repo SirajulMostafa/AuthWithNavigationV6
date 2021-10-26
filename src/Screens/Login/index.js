@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import {TextInput as MetarialTextInput} from 'react-native-paper';
-
+import { validEmail, validPassword } from './RegExp';
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -47,17 +47,51 @@ export default class index extends Component {
   
   
   }
+
+ 
+  isValidPassword=(val) =>{
+    
+    if (validPassword.test(val)===false) {
+      // return 'Invalid  Address';
+      this.setState({
+        passwordError:true
+      })
+    }else{
+      this.setState({
+        passwordError:false
+      })
+    }
+  }
+
   emailValueChanged = (text)=>{
     console.log("email vaule is ......",text)
     this.setState({
       emailValue:text,
     })
+    this.isValiEmail(text)
+  }
+  isValiEmail=(email) =>{
+    // let regEmail =  
+    // don't remember from where i copied this code, but this works.
+   // let regEmail = '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
+    
+    if (validEmail.test(email)===false) {
+      // return 'Invalid Email Address';
+      this.setState({
+        emailError:true
+      })
+    }else{
+      this.setState({
+        emailError:false
+      })
+    }
   }
   passwordValueChanged = (textP)=>{
     console.log("password vaule is ......",textP)
     this.setState({
       passwordValue:textP,
     })
+    this.isValidPassword(textP)
   }
   render() {
     return (
