@@ -2,9 +2,12 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 
 import LoginScreen from './//src/Screens/Login';
+import HomeScreen from './/src/Screens/Home'
 
 const App = () => {
-  return <LoginScreen />;
+  // return <LoginScreen />;
+  return <HomeScreen/>
+
 };
 
 const styles = StyleSheet.create({
