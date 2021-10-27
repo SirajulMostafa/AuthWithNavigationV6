@@ -8,91 +8,87 @@ import {
   // TextInput,
   Button,
   ScrollView,
+  // HelperText,
 } from 'react-native';
 
-import {TextInput as MetarialTextInput} from 'react-native-paper';
-import { validEmail, validPassword } from './RegExp';
+import {TextInput as MetarialTextInput,HelperText} from 'react-native-paper';
+import {validEmail, validPassword} from './RegExp';
 export default class index extends Component {
   constructor(props) {
     super(props);
-    this.state = {emailError: false, emailValue: '',passwordError: false, passwordValue: ''};
+    this.state = {
+      emailError: false,
+      emailValue: '',
+      passwordError: false,
+      passwordValue: '',
+    };
   }
   loginButtonHandler = () => {
-    console.log("clicked")
-    if (this.state.emailValue=='') {
-      console.log("email is null")
+    console.log('clicked');
+    if (this.state.emailValue == '') {
+      console.log('email is null');
       this.setState({
-        emailError:true,
-       
-      })
-      
+        emailError: true,
+      });
     } else {
-      console.log('else')
+      console.log('else');
       this.setState({
-        emailError:false,
-
-      })
+        emailError: false,
+      });
     }
 
-    if (this.state.passwordValue=='') {
+    if (this.state.passwordValue == '') {
       this.setState({
-        passwordError:true,
-      })
+        passwordError: true,
+      });
+    } else {
+      this.setState({
+        passwordError: false,
+      });
     }
-      else {
-        this.setState({
-          passwordError:false,
-        })
-      }
-  
-  
-  }
+  };
 
- 
-  isValidPassword=(val) =>{
-    
-    if (validPassword.test(val)===false) {
+  isValidPassword = val => {
+    if (validPassword.test(val) === false) {
       // return 'Invalid  Address';
       this.setState({
-        passwordError:true
-      })
-    }else{
+        passwordError: true,
+      });
+    } else {
       this.setState({
-        passwordError:false
-      })
+        passwordError: false,
+      });
     }
-  }
+  };
 
-  emailValueChanged = (text)=>{
-    console.log("email vaule is ......",text)
+  emailValueChanged = text => {
+    console.log('email vaule is ......', text);
     this.setState({
-      emailValue:text,
-    })
-    this.isValiEmail(text)
-  }
-  isValiEmail=(email) =>{
-    // let regEmail =  
-    // don't remember from where i copied this code, but this works.
-   // let regEmail = '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
-    
-    if (validEmail.test(email)===false) {
+      emailValue: text,
+    });
+    this.isValiEmail(text);
+  };
+
+  isValiEmail = email => {
+    if (validEmail.test(email) === false) {
       // return 'Invalid Email Address';
       this.setState({
-        emailError:true
-      })
-    }else{
+        emailError: true,
+      });
+    } else {
       this.setState({
-        emailError:false
-      })
+        emailError: false,
+      });
     }
-  }
-  passwordValueChanged = (textP)=>{
-    console.log("password vaule is ......",textP)
+  };
+
+  passwordValueChanged = textP => {
+    console.log('password vaule is ......', textP);
     this.setState({
-      passwordValue:textP,
-    })
-    this.isValidPassword(textP)
-  }
+      passwordValue: textP,
+    });
+    this.isValidPassword(textP);
+  };
   render() {
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -129,6 +125,9 @@ export default class index extends Component {
                 value={this.state.emailValue}
                 onChangeText={this.emailValueChanged}
               />
+              <HelperText type="error" visible={this.state.emailError}>
+        Email address is invalid!
+      </HelperText>
               <MetarialTextInput
                 label="Password"
                 mode="outlined"
@@ -136,12 +135,13 @@ export default class index extends Component {
                 // right={<MetarialTextInput.Icon name="eye" />}
                 style={{marginTop: '5%', marginBottom: '5%'}}
                 placeholder="password"
-
                 error={this.state.passwordError}
                 value={this.state.passwordValue}
                 onChangeText={this.passwordValueChanged}
-
               />
+              <HelperText type="error" visible={this.state.passwordError}>
+        Password is invalid!
+      </HelperText>
 
               <Button
                 icon="camera"
