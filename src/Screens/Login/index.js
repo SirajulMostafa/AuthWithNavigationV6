@@ -21,6 +21,7 @@ export default class index extends Component {
       emailValue: '',
       passwordError: false,
       passwordValue: '',
+      isSecurePassword:true,
     };
   }
   loginButtonHandler = () => {
@@ -89,6 +90,14 @@ export default class index extends Component {
     });
     this.isValidPassword(textP);
   };
+
+showPassword =()=>{
+  console.log(' ......');
+  this.setState({
+   isSecurePassword: !this.state.isSecurePassword
+  })
+}
+
   render() {
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -131,8 +140,8 @@ export default class index extends Component {
               <MetarialTextInput
                 label="Password"
                 mode="outlined"
-                secureTextEntry
-                // right={<MetarialTextInput.Icon name="eye" />}
+                secureTextEntry={this.state.isSecurePassword}
+                right={<MetarialTextInput.Icon name={this.state.isSecurePassword?'eye':'eye-off'} onPress={this.showPassword} />}
                 style={{marginTop: '5%', marginBottom: '5%'}}
                 placeholder="password"
                 error={this.state.passwordError}
