@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, StyleSheet, View, FlatList} from 'react-native';
+import {Text, StyleSheet, View, FlatList,TouchableOpacity} from 'react-native';
 // import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 export default class index extends Component {
@@ -37,7 +37,7 @@ export default class index extends Component {
     // DATA=['IOS','abc','cde','efg']
   }
   renderItem = rowItem => {
-    console.log('Test row item', rowItem);
+    // console.log('Test row item', rowItem);
 
     return (
       <View style={styles.item}>
@@ -54,9 +54,9 @@ export default class index extends Component {
           //    data={DATA}
 
           data={itemsArray}
-          renderItem={this.renderItem}
+        renderItem={this.renderItem}
           keyExtractor={rowItem => rowItem.id}
-          // extraData={selectedId}
+          // extraData={selectedId}  
         />
       </View>
     );

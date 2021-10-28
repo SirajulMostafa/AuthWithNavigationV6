@@ -1,16 +1,27 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet,ImageBackground,Image} from 'react-native';
 
 import LoginScreen from './//src/Screens/Login';
 import HomeScreen from './/src/Screens/Home'
-
+const image = { uri: "https://reactjs.org/logo-og.png" };
 const App = () => {
   // return <LoginScreen />;
-  return <HomeScreen/>
+  return (
+    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+         
+         <HomeScreen/>
+         </ImageBackground>
+  )
+  
 
 };
 
 const styles = StyleSheet.create({
+  
+  image: {
+    flex: 1,
+    justifyContent: "center"
+  },
   // sectionContainer: {
   //   marginTop: 32,
   //   paddingHorizontal: 24,
