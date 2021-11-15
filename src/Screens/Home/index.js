@@ -15,11 +15,13 @@ const Index = () => {
     return (
       <View style={styles.item}>
         <View style={{flexDirection: 'row'}}>
-          <Avatar.Image size={100} source={require('../../Images/logo.png')} />
-          <View style={{alignSelf: 'center'}}>
-            <Text style={{fontSize: 20}}>{rowItem.item.title}</Text>
-            <Text>{rowItem.item.email}</Text>
-            <Text>{rowItem.item.name.title}</Text>
+          {/* <Avatar.Image size={100} source={require('../../Images/logo.png')} /> */}
+          <Avatar.Image size={100} source={{uri:rowItem.item.picture.large}} />
+          <View style={{alignSelf: 'center',marginLeft: 20, }}>
+            {/* <Text style={{fontSize: 20}}>{rowItem.item.title}</Text> */}
+            <Text style={{color:'white',fontSize:16,}}>{`${rowItem.item.name.title} ${rowItem.item.name.first} ${rowItem.item.name.last}`}</Text>
+            <Text style={{color:'white',fontSize:14,}}>{rowItem.item.email}</Text>
+            
           </View>
         </View>
       </View>
@@ -29,7 +31,7 @@ const renderLoader=()=>{
   return(
     isLoading ?
     <View style={styles.renderLoader}>
-      <ActivityIndicator size="large" color="#aaa"/>
+      <ActivityIndicator size="large" color="#fff"/>
     </View> : null
   )
 }
@@ -82,9 +84,9 @@ const styles = StyleSheet.create({
     // padding: 20,
     marginVertical: 8,
     // marginHorizontal: 16,
-    borderBottomColor: '#999',
-    // borderBottomWidth: 2,
-    backgroundColor: '#f9c2ff',
+    borderBottomColor: '#cecfe0',
+    borderBottomWidth: 2,
+    backgroundColor:'rgba(10,11,20,0.5)',
   },
   container: {
     flex: 1,
