@@ -36,7 +36,7 @@ const renderLoader=()=>{
   )
 }
 const loadMoreItem = () =>{
-  console.log('load more items')
+  console.log('load more items')  
   setCurrentPage(currentPage+1)
 }
 

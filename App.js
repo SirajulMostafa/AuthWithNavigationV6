@@ -4,12 +4,24 @@ import {StyleSheet,ImageBackground,Image} from 'react-native';
 import LoginScreen from './//src/Screens/Login';
 import HomeScreen from './/src/Screens/Home'
 const image = { uri: "https://reactjs.org/logo-og.png" };
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const App = () => {
   // return <LoginScreen />;
+const Stack= createNativeStackNavigator();
+
   return (
+
+  
     <ImageBackground source={image} resizeMode="cover" style={styles.image}>
          
-         <HomeScreen/>
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} />
+    </Stack.Navigator>
+  </NavigationContainer>
+  
+         {/* <HomeScreen/> */}
          </ImageBackground>
   )
   
