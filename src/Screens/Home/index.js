@@ -3,7 +3,9 @@ import {Text, StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
 import {ActivityIndicator, Avatar, Card} from 'react-native-paper';
 import axios from "axios";
 import index from '../Login';
-const Index = () => {
+import ProfileDetails from './ProfileDetails';
+import { NavigationContainer } from '@react-navigation/native';
+const Index = ({navigation}) => {
 
   const [userList, setUserList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1)
@@ -13,7 +15,9 @@ const Index = () => {
     // console.log('Test row item', rowItem);
 
     return (
-      <Card style={styles.item}>
+      <Card 
+      onPress={ProfileNavigation}
+      style={styles.item}>
         <View style={{flexDirection: 'row'}}>
           {/* <Avatar.Image size={100} source={require('../../Images/logo.png')} /> */}
           <Avatar.Image size={100} source={{uri:rowItem.item.picture.large}} />
@@ -61,8 +65,9 @@ const loadMoreItem = () =>{
     });
 }
 
-    
-
+  ProfileNavigation =()=>{
+    navigation.navigate('ProfileDetails')
+  }
   return (
     <View style={styles.container}>
       <FlatList
