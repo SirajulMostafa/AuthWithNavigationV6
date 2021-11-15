@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Text, StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
-import {ActivityIndicator, Avatar} from 'react-native-paper';
+import {ActivityIndicator, Avatar, Card} from 'react-native-paper';
 import axios from "axios";
 import index from '../Login';
 const Index = () => {
@@ -13,7 +13,7 @@ const Index = () => {
     // console.log('Test row item', rowItem);
 
     return (
-      <View style={styles.item}>
+      <Card style={styles.item}>
         <View style={{flexDirection: 'row'}}>
           {/* <Avatar.Image size={100} source={require('../../Images/logo.png')} /> */}
           <Avatar.Image size={100} source={{uri:rowItem.item.picture.large}} />
@@ -24,7 +24,7 @@ const Index = () => {
             
           </View>
         </View>
-      </View>
+       </Card>
     );
   };
 const renderLoader=()=>{
@@ -81,12 +81,13 @@ const loadMoreItem = () =>{
 
 const styles = StyleSheet.create({
   item: {
+margin: '2%',
     // padding: 20,
-    marginVertical: 8,
+     marginVertical: 5,
     // marginHorizontal: 16,
-    borderBottomColor: '#cecfe0',
-    borderBottomWidth: 2,
-    backgroundColor:'rgba(10,11,20,0.5)',
+    // borderBottomColor: '#cecfe0',
+   // borderBottomWidth: 2,
+    backgroundColor:'rgba(10,11,20,.8)',
   },
   container: {
     flex: 1,
