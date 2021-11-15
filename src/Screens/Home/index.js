@@ -8,6 +8,7 @@ const Index = () => {
   const [userList, setUserList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1)
   
+  const [isLoading, setIsLoading] = useState(false)
   const renderItem = rowItem => {
     // console.log('Test row item', rowItem);
 
@@ -26,9 +27,10 @@ const Index = () => {
   };
 const renderLoader=()=>{
   return(
+    isLoading ?
     <View style={styles.renderLoader}>
       <ActivityIndicator size="large" color="#aaa"/>
-    </View>
+    </View> : null
   )
 }
 const loadMoreItem = () =>{
@@ -40,6 +42,7 @@ const loadMoreItem = () =>{
     getUsersList()
   }, [currentPage])
    const getUsersList=()=>{
+     setIsLoading(true)
     // fetch('https://jsonplaceholder.typicode.com/posts')
     axios.get(`https://randomuser.me/api/?page=${currentPage}&results=10`)
    // .then(response => response.json())
@@ -47,6 +50,8 @@ const loadMoreItem = () =>{
 
       // setUserList(responsJson.data.results)
       setUserList([...userList, ...responsJson.data.results])
+      
+      setIsLoading(false)
       //return console.log('Response is...', responsJson.data);
     })
     .catch(error => {
