@@ -6,9 +6,11 @@ import HomeScreen from './/src/Screens/Home'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProfileDetails from './src/Screens/Home/ProfileDetails';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 const App = () => {
   // return <LoginScreen />;
 const Stack= createNativeStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
   return (
 
@@ -16,10 +18,14 @@ const Stack= createNativeStackNavigator();
     // <ImageBackground source={image} resizeMode="cover" style={styles.image}>
          
     <NavigationContainer>
-    <Stack.Navigator>
+    {/* <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="ProfileDetails" component={ProfileDetails} />
-    </Stack.Navigator>
+    </Stack.Navigator> */}
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="ProfileDetails" component={ProfileDetails} />
+    </Tab.Navigator>
   </NavigationContainer>
   
         //  {/* <HomeScreen/> */}
