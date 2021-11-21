@@ -1,16 +1,26 @@
 import React from 'react';
 import {StyleSheet,ImageBackground,Image} from 'react-native';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LoginScreen from './//src/Screens/Login';
 import HomeScreen from './/src/Screens/Home'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProfileDetails from './src/Screens/Home/ProfileDetails';
+
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 const App = () => {
   // return <LoginScreen />;
 const Stack= createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
+
+ const HomeStack =()=>{
+   return(
+    <Stack.Navigator>
+    <Stack.Screen name="HomeStack" component={HomeScreen} />
+    <Stack.Screen name="ProfileDetails" component={ProfileDetails} />
+  </Stack.Navigator>
+   )
+ }
 
   return (
 
@@ -18,13 +28,31 @@ const Tab = createMaterialBottomTabNavigator();
     // <ImageBackground source={image} resizeMode="cover" style={styles.image}>
          
     <NavigationContainer>
-    {/* <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="ProfileDetails" component={ProfileDetails} />
-    </Stack.Navigator> */}
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="ProfileDetails" component={ProfileDetails} />
+    <Tab.Navigator
+     initialRouteName="Home"
+     activeColor="#f0edf6"
+     inactiveColor="#3e2465"
+     barStyle={{ backgroundColor: '#694fad' }}
+    // barStyle={{ paddingBottom: 48 }}
+    >
+      <Tab.Screen name="Home" 
+      component={HomeStack}
+      options={{
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="home" color={color} size={26} />
+        ),
+      }}
+      />
+      <Tab.Screen name="Login"
+       component={LoginScreen} 
+       options={{
+        tabBarLabel: 'login',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="account" color={color} size={26} />
+        ),
+      }}
+       />
     </Tab.Navigator>
   </NavigationContainer>
   
