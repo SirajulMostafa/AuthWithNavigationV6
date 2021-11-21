@@ -16,8 +16,18 @@ const Tab = createMaterialBottomTabNavigator();
  const HomeStack =()=>{
    return(
     <Stack.Navigator>
-    <Stack.Screen name="HomeStack" component={HomeScreen} />
-    <Stack.Screen name="ProfileDetails" component={ProfileDetails} />
+    <Stack.Screen name="HomeStack" 
+    component={HomeScreen}
+    options={{
+      title:'Home'
+    }} 
+     />
+    <Stack.Screen name="ProfileDetails"
+     component={ProfileDetails}
+     options={{
+      title:'Profile'
+    }} 
+     />
   </Stack.Navigator>
    )
  }
