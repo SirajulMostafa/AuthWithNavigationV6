@@ -40,18 +40,21 @@ const Tab = createMaterialBottomTabNavigator();
     <NavigationContainer>
     <Tab.Navigator
      initialRouteName="Home"
-     activeColor="#f0edf6"
-     inactiveColor="#3e2465"
-     barStyle={{ backgroundColor: '#694fad' }}
+     activeColor="orange"
+     inactiveColor="gray"
+     
+     barStyle={{ backgroundColor: 'red' }}
     // barStyle={{ paddingBottom: 48 }}
     >
       <Tab.Screen name="Home" 
       component={HomeStack}
       options={{
         tabBarLabel: 'Home',
+        tabBarBadge:10,
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons name="home" color={color} size={26} />
         ),
+
       }}
       />
       <Tab.Screen name="Login"
