@@ -5,6 +5,7 @@ import LoginScreen from './//src/Screens/Login';
 import HomeScreen from './/src/Screens/Home'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import ProfileDetails from './src/Screens/Home/ProfileDetails';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -12,6 +13,7 @@ const App = () => {
   // return <LoginScreen />;
 const Stack= createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
+const Drawer=createDrawerNavigator();
 
  const HomeStack =()=>{
    return(
@@ -32,6 +34,15 @@ const Tab = createMaterialBottomTabNavigator();
    )
  }
 
+ const DrawerScreen = ()=>{
+   return(
+    <Drawer.Navigator>
+    <Drawer.Screen name="Home" component={HomeScreen} />
+    <Drawer.Screen name="Login" component={LoginScreen} />
+  </Drawer.Navigator>
+   )
+ }
+
   return (
 
   
@@ -46,7 +57,7 @@ const Tab = createMaterialBottomTabNavigator();
      barStyle={{ backgroundColor: 'red' }}
     // barStyle={{ paddingBottom: 48 }}
     >
-      <Tab.Screen name="Home" 
+     <Tab.Screen name="Home"   
       component={HomeStack}
       options={{
         tabBarLabel: 'Home',
@@ -58,9 +69,18 @@ const Tab = createMaterialBottomTabNavigator();
       }}
       />
       <Tab.Screen name="Login"
-       component={LoginScreen} 
+      component={LoginScreen} 
        options={{
         tabBarLabel: 'login',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="account" color={color} size={26} />
+        ),
+      }}
+       />
+       <Tab.Screen name="LoginScreen"
+      component={DrawerScreen} 
+       options={{
+        tabBarLabel: 'drawer',
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons name="account" color={color} size={26} />
         ),
