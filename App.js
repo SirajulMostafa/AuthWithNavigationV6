@@ -38,7 +38,7 @@ const Drawer=createDrawerNavigator();
    return(
     <Drawer.Navigator>
     <Drawer.Screen name="Home" component={HomeScreen} />
-    <Drawer.Screen name="Login" component={LoginScreen} />
+    <Drawer.Screen name="profile" component={ProfileDetails} />
   </Drawer.Navigator>
    )
  }
