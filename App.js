@@ -1,12 +1,16 @@
 import React from 'react';
 import {StyleSheet, ImageBackground, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TabModule } from './src/Routing';
+import Authantication from './src/Helpers/Auth';
+// import {  } from './src/Helpers/Auth';
+
 const App = () => {
   return (
     <NavigationContainer>
-      <TabModule />
+      {/* <TabModule /> */}
+      <Authantication/>
     </NavigationContainer>
   );
 };

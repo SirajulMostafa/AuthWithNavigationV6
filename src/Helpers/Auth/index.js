@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { AuthContext } from './AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import index from '../../Screens/Login';
 
 
-export default function App({ navigation }) {
-  const [state, dispatch] = React.useReducer(
+   const Authantication =({ navigation })=> {
+   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {
         case 'RESTORE_TOKEN':
@@ -90,3 +91,4 @@ export default function App({ navigation }) {
     </AuthContext.Provider>
   );
 }
+export default index
