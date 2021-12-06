@@ -81,5 +81,6 @@ export const TabModule=()=>{
        <Drawer.Screen name="Home" component={HomeScreen} />
        <Drawer.Screen name="profile" component={ProfileDetails} />
      </Drawer.Navigator>
-      )
+      ) 
     }
+

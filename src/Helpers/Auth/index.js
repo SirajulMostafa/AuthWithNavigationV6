@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { AuthContext } from './AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import index from '../../Screens/Login';
+// import login from '../../Screens/Login';
+import { DrawerScreen, HomeStack, TabModule, } from '../../Routing';
 
 
-   const Authantication =({ navigation })=> {
+ const Authantication =({ navigation })=> {
    const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {
@@ -36,14 +37,18 @@ import index from '../../Screens/Login';
   );
 
   React.useEffect(() => {
+    console.log("ok use effect")
     // Fetch the token from storage then navigate to our appropriate place
     const bootstrapAsync = async () => {
       let userToken;
 
       try {
-        userToken = await AsyncStorage.getItemAsync('userToken');
+        userToken = await AsyncStorage.getItem('@userToken');
+        userToken='abcde23'
+        console.log("abc"+userToken)
       } catch (e) {
         // Restoring token failed
+        console.log(e)
       }
 
       // After restoring token, we may need to validate it in production apps
@@ -81,14 +86,20 @@ import index from '../../Screens/Login';
 
   return (
     <AuthContext.Provider value={authContext}>
-      <Stack.Navigator>
+      {/* <Stack.Navigator> */}
+      {console.log( state.userToken)}
         {state.userToken == null ? (
-          <Stack.Screen name="SignIn" component={SignInScreen} />
+         
+         // <Stack.Screen name="Home" component={HomeScreen} />
+           
+           <HomeStack/>
         ) : (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <DrawerScreen/>
+         // <Stack.Screen name="Login" component={LoginScreen} />
+          //  <HomeStack/>
          )}
-      </Stack.Navigator>
+       {/* </Stack.Navigator> */}
     </AuthContext.Provider>
   );
 }
-export default index
+export default Authantication
