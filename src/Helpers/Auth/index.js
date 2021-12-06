@@ -44,7 +44,7 @@ import { DrawerScreen, HomeStack, TabModule, } from '../../Routing';
 
       try {
         userToken = await AsyncStorage.getItem('@userToken');
-        userToken='abcde23'
+        //userToken='abcde23'
         console.log("abc"+userToken)
       } catch (e) {
         // Restoring token failed
