@@ -19,7 +19,7 @@ import { AuthContext } from '../../Helpers/Auth/AuthContext';
 import {validEmail, validPassword} from './RegExp';
 //import { AuthContext } from '../../Helpers/auth/AuthContext';
 export default class index extends Component {
- static contextType = AuthContext
+  static contextType = AuthContext
   constructor(props) {
     super(props);
     this.state = {
@@ -30,11 +30,11 @@ export default class index extends Component {
       isSecurePassword:true,
       
     };
-    AsyncStorage.setItem('@userToken','')
+    AsyncStorage.setItem('@userToken','')//to unset user token test perpose
    
   }
   
-  loginButtonHandler = () => {
+   loginButtonHandler = () => {
     console.log('clicked');
     if (this.state.emailValue == '') {
       console.log('email is null');

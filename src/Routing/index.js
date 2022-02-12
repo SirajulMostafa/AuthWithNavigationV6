@@ -2,7 +2,7 @@ import * as React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LoginScreen from '../Screens/Login';
 import HomeScreen from '../Screens/Home';
-import ProfileDetails from '../Screens/Home/ProfileDetails';
+import ProfileScreen from '../Screens/Home/ProfileDetails';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
         createDrawerNavigator,
@@ -13,12 +13,10 @@ import {
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Text } from 'react-native-paper'; 
-
-
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
-
+import { AuthContext }  from '../Helpers/Auth/AuthContext';
 export const TabModule=()=>{
     return(
       <Tab.Navigator
@@ -66,22 +64,8 @@ export const TabModule=()=>{
      export const HomeStack =()=>{
       return(
        <Stack.Navigator>
-         
-       {/* <Stack.Screen name="HomeStack" 
-       component={HomeScreen}
-       options={{
-         title:'Home'
-       }} 
-        /> */}
-       {/* <Stack.Screen name="ProfileDetails"
-        component={ProfileDetails}
-        options={{
-         title:'Profile'
-       }} 
-       
-        /> */}
 
-<Stack.Screen name="Login"
+ <Stack.Screen name="Login"
         component={LoginScreen}
         options={{
          title:'Login'
@@ -91,11 +75,14 @@ export const TabModule=()=>{
       )
     }
 
-    export const CustomDrawerContent=(props) =>{
+    export const CustomDrawerContent=(props) =>{ 
+      const  { signOut } = React.useContext(AuthContext);  
       return (
         <DrawerContentScrollView {...props}>
           <DrawerItemList {...props} />
           <DrawerItem label="logout" onPress={() => alert('Link to help')} />
+          <DrawerItem label="logout" onPress={() =>(signOut())} />
+          
         </DrawerContentScrollView>
       );
     }
@@ -104,7 +91,7 @@ export const TabModule=()=>{
       return(
        <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
        <Drawer.Screen name="Home" component={HomeScreen} />
-       <Drawer.Screen name="profile" component={ProfileDetails} />
+       <Drawer.Screen name="profile" component={ProfileScreen} />
      </Drawer.Navigator>
       ) 
     }

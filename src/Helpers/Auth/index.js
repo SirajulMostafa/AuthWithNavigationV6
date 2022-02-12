@@ -86,20 +86,14 @@ import { DrawerScreen, HomeStack, TabModule, } from '../../Routing';
 
   return (
     <AuthContext.Provider value={authContext}>
-      {/* <Stack.Navigator> */}
       {console.log( state.userToken)}
         {state.userToken == null ? (
-         
-         // <Stack.Screen name="Home" component={HomeScreen} />
-           //here home screen is login screen
            <HomeStack/>
         ) : (
           <DrawerScreen/>
-         // <Stack.Screen name="Login" component={LoginScreen} />
-          //  <HomeStack/>
+  
          )}
-       {/* </Stack.Navigator> */}
     </AuthContext.Provider>
-  );
+  ); 
 }
 export default Authantication
