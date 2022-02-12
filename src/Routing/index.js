@@ -4,8 +4,15 @@ import LoginScreen from '../Screens/Login';
 import HomeScreen from '../Screens/Home';
 import ProfileDetails from '../Screens/Home/ProfileDetails';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {
+        createDrawerNavigator,
+        DrawerContentScrollView,
+        DrawerItemList,
+        DrawerItem
+      } from '@react-navigation/drawer';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text } from 'react-native-paper'; 
 
 
 const Stack = createNativeStackNavigator();
@@ -83,10 +90,19 @@ export const TabModule=()=>{
      </Stack.Navigator>
       )
     }
+
+    export const CustomDrawerContent=(props) =>{
+      return (
+        <DrawerContentScrollView {...props}>
+          <DrawerItemList {...props} />
+          <DrawerItem label="logout" onPress={() => alert('Link to help')} />
+        </DrawerContentScrollView>
+      );
+    }
     
      export const DrawerScreen = ()=>{
       return(
-       <Drawer.Navigator>
+       <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
        <Drawer.Screen name="Home" component={HomeScreen} />
        <Drawer.Screen name="profile" component={ProfileDetails} />
      </Drawer.Navigator>

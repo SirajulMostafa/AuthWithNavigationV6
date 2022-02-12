@@ -30,7 +30,7 @@ export default class index extends Component {
       isSecurePassword:true,
       
     };
-    // AsyncStorage.setItem('@userToken','')
+    AsyncStorage.setItem('@userToken','')
    
   }
   
@@ -60,8 +60,9 @@ export default class index extends Component {
     if(!this.state.emailError 
       && !this.state.passwordError
       ){
-        AsyncStorage.setItem('@userToken','123456asd')
+        
        this.context.signIn(this.state.emailValue,this.state.passwordValue)
+        AsyncStorage.setItem('@userToken','123456asd')
     }
   };
 
